@@ -480,13 +480,6 @@ section {
   flex-direction: column;
 }
 
-.testimonials-box img {
-  width: 15rem;
-  border-radius: 50%;
-  border: 3px solid var(--main-color);
-  box-shadow: 0 0 25px var(--main-color);
-}
-
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -499,7 +492,7 @@ section {
   background-color: rgb(226, 232, 206);
   border: 3px solid rgba(238, 238, 238, 0.2);
   border-radius: 2rem;
-  margin: 0 2rem;
+  margin: 0 3rem;
   padding: 30px 60px;
   cursor: pointer;
   display: flex;
@@ -522,12 +515,7 @@ section {
 }
 
 .testimonial-item p {
-  font-size: 1.3rem;
-}
-
-.bxs-star {
-  color: gold;
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .testimonial-item:nth-child(2) {
