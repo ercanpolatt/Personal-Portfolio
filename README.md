@@ -1,4 +1,4 @@
-![Portfolio Preview](![alt text](image.png))
+![alt text](image-1.png)
 
 
 # 💼 Ercan | Personal Portfolio Website
@@ -40,4 +40,4 @@ The project focuses on clean UI, structured code organization, and responsive de
 - Smooth Scroll Behavior
 
 ---
-<img src="![alt text](image-1.png)" width="800">
+![alt text](image.png)
