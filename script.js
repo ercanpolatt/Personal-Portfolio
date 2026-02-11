@@ -87,3 +87,134 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ============================================
+// CERTIFICATE MODAL FUNCTIONALITY
+// ============================================
+
+const certificateCards = document.querySelectorAll('.certificate-card');
+const modal = document.getElementById('certificate-modal');
+const modalImage = document.getElementById('modal-image');
+const modalTitle = document.getElementById('modal-title');
+const modalIssuer = document.getElementById('modal-issuer');
+const modalDate = document.getElementById('modal-date');
+const modalClose = document.querySelector('.modal-close');
+const modalPrev = document.querySelector('.modal-prev');
+const modalNext = document.querySelector('.modal-next');
+
+let currentCertificateIndex = 0;
+
+// Certificate data array - UPDATE THIS WITH YOUR ACTUAL CERTIFICATE DATA
+const certificatesData = [
+  {
+    image: 'certificates/promt-muhendisligi_page-0001.jpg',
+    title: 'ChatGPT 2026: Prompt Mühendisliği',
+    issuer: 'Udemy/Atil Samancioglu',
+    date: 'February 2026'
+  },
+  {
+    image: 'certificates/yuksekogretim-mezun-belgesi-sorgulama.jpg',
+    title: 'Mezun Belgesi',
+    issuer: 'Amasya University',
+    date: 'January 2026'
+  },
+  {
+    image: 'certificates/Siber_Güvenliğe_Giriş_Sertifika_page-0001.jpg',
+    title: 'Siber Güvenlik Sertifikasi',
+    issuer: 'T.C. Türkiye Bilgi Teknolojileri ve İletişim Kurumu',
+    date: 'October 2025'
+  },
+  {
+    image: 'certificates/ingilizce_page-0001.jpg',
+    title: 'İngilizce Sertifikasi',
+    issuer: 'Amasya University',
+    date: 'December 2022'
+  }
+  {
+    image: 'certificates/bilgiteknogiris_page-0001.jpg',
+    title: 'Bilgi Teknolojileri Giriş Sertifikasi',
+    issuer: 'T.C. Türkiye Bilgi Teknolojileri ve İletişim Kurumu',
+    date: 'October 2025'
+  },
+  {
+    image: 'certificates/Ağ_Temelleri_Sertifika_page-0001.jpg',
+    title: 'Ağ Temelleri Sertifikasi',
+    issuer: 'T.C. Türkiye Bilgi Teknolojileri ve İletişim Kurumu',
+    date: 'October 2025'
+  }
+  // Add more certificates as needed
+];
+
+// Open modal when certificate card is clicked
+certificateCards.forEach((card, index) => {
+  card.addEventListener('click', () => {
+    currentCertificateIndex = index;
+    showCertificate(currentCertificateIndex);
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  });
+});
+
+// Function to show certificate in modal
+function showCertificate(index) {
+  const cert = certificatesData[index];
+  modalImage.src = cert.image;
+  modalTitle.textContent = cert.title;
+  modalIssuer.textContent = cert.issuer;
+  modalDate.textContent = cert.date;
+  
+  // Add fade-in animation
+  modalImage.style.opacity = '0';
+  setTimeout(() => {
+    modalImage.style.opacity = '1';
+  }, 100);
+}
+
+// Close modal
+modalClose.addEventListener('click', closeModal);
+
+// Close modal when clicking outside the image
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
+
+// Close modal with ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.style.display === 'block') {
+    closeModal();
+  }
+});
+
+function closeModal() {
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto'; // Restore scrolling
+}
+
+// Previous certificate
+modalPrev.addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentCertificateIndex = (currentCertificateIndex - 1 + certificatesData.length) % certificatesData.length;
+  showCertificate(currentCertificateIndex);
+});
+
+// Next certificate
+modalNext.addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentCertificateIndex = (currentCertificateIndex + 1) % certificatesData.length;
+  showCertificate(currentCertificateIndex);
+});
+
+// Keyboard navigation (left/right arrows)
+document.addEventListener('keydown', (e) => {
+  if (modal.style.display === 'block') {
+    if (e.key === 'ArrowLeft') {
+      currentCertificateIndex = (currentCertificateIndex - 1 + certificatesData.length) % certificatesData.length;
+      showCertificate(currentCertificateIndex);
+    } else if (e.key === 'ArrowRight') {
+      currentCertificateIndex = (currentCertificateIndex + 1) % certificatesData.length;
+      showCertificate(currentCertificateIndex);
+    }
+  }
+});
