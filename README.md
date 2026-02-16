@@ -9,7 +9,7 @@ A modern and fully responsive personal portfolio website built to showcase my te
 
 ## 🚀 Live Demo
 
-👉 https://github.com/ercanpolat61/Personal-Portfolio
+👉 https://github.com/ercanpolatt/Personal-Portfolio
 
 ---
 
